@@ -1,0 +1,4 @@
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\UnicomSGIP\bin\Debug\UnicomSGIP.dll
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\UnicomSGIP\bin\Debug\UnicomSGIP.pdb
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\UnicomSGIP\obj\Debug\UnicomSGIP.dll
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\UnicomSGIP\obj\Debug\UnicomSGIP.pdb

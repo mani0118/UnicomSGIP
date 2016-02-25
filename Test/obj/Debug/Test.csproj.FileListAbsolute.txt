@@ -1,0 +1,11 @@
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\bin\Debug\Test.exe.config
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\bin\Debug\Test.exe
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\bin\Debug\Test.pdb
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\bin\Debug\UnicomSGIP.dll
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\bin\Debug\UnicomSGIP.pdb
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\obj\Debug\Test.Form1.resources
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\obj\Debug\Test.Properties.Resources.resources
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\obj\Debug\Test.csproj.GenerateResource.Cache
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\obj\Debug\Test.exe
+C:\Users\ASUS\Documents\GitHub\UnicomSGIP\Test\obj\Debug\Test.pdb
