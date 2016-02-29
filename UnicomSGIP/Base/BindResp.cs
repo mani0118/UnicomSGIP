@@ -36,7 +36,7 @@ namespace UnicomSGIP.Base
         /// <summary>
         /// 绑定结果
         /// </summary>
-        public int Result { get; set; }
+        public byte Result { get; set; }
         /// <summary>
         /// 返回值
         /// </summary>

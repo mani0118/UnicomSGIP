@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using UnicomSGIP.Base;
+using System.Text;
 
 namespace UnicomSGIP.Main
 {
@@ -52,8 +53,8 @@ namespace UnicomSGIP.Main
             int vConnectNum = 0;
             while (true)
             {
-                IPAddress vIp = IPAddress.Parse(Config.Ip);
-                IPEndPoint vIpEndPoint = new IPEndPoint(vIp, Config.Port);
+                IPAddress vIp = IPAddress.Parse(SocketConfig.SocketIp);
+                IPEndPoint vIpEndPoint = new IPEndPoint(vIp, SocketConfig.Port);
                 _Socket = new Socket(vIpEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                 try
                 {
@@ -76,36 +77,37 @@ namespace UnicomSGIP.Main
                     vConnectNum++;
                 }
                 if (vConnectNum >= 3)
-                    throw new System.Exception("连接失败!");
+                    Exception.UnicomSgipException.CustomerException("连接失败!");
             }
             _Socket.NoDelay = true;
-            Bind vBindBll = new Bind(Config.LoginName, Config.Password);
+            Bind vBindBll = new Bind();
             vBindBll.FillBodyBytes();
-            vBindBll.Write(_Socket,Config.SourceNode);
+            vBindBll.Write(_Socket);
 
             BindResp vRes = (BindResp)vBindBll.Read(_Socket);
             if (vRes.Result != 0)
-                throw new System.Exception("SMG拒绝连接!错误码：State Code:" + vRes.Result);
+                Exception.UnicomSgipException.CustomerException(Help.ResultCode.ContainsKey(vRes.Result) ? Help.ResultCode[vRes.Result] : "unknow error");
         }
         private void DoSendMsg(List<Model.SubmitRequest> argSendSmss)
         {
             Submit vSubmitBll;
             SubmitResp vSubmitResp;
+            StringBuilder vResultMsg = new StringBuilder();
             foreach (Model.SubmitRequest item in argSendSmss)
             {
                 vSubmitBll = new Submit(item);
                 vSubmitBll.FillBodyBytes();
-                vSubmitBll.Write(_Socket, Config.SourceNode);
+                vSubmitBll.Write(_Socket);
                 vSubmitResp = (SubmitResp)vSubmitBll.Read(_Socket);
-                if (vSubmitResp.Result != 0)
-                    _Result = vSubmitResp.Result.ToString();
+                string vResultTemp = Help.ResultCode.ContainsKey(vSubmitResp.Result) ? Help.ResultCode[vSubmitResp.Result] : "unknow error";
+                vResultMsg.Append(item.UserNumber + ":" + vResultTemp + "|");
             }
-
+            _Result = vResultMsg.ToString();
         }
         private void UnBind()
         {
             UnBind vUnBindBll = new UnBind();
-            vUnBindBll.Write(_Socket, Config.SourceNode);
+            vUnBindBll.Write(_Socket);
             UnBindResp vResp = (UnBindResp)vUnBindBll.Read(_Socket);
             if (vResp._Header.CommandId.Equals(SGIPCommandDefine.SGIP_UNBIND_RESP))
             {

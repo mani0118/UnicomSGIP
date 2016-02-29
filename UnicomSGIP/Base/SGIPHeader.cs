@@ -92,15 +92,15 @@ namespace UnicomSGIP.Base
         /// </summary>
         /// <param name="argSrcNode"></param>
         /// <returns></returns>
-        public byte[] GetCommandHeadBytes(long argSrcNode)
+        public byte[] GetCommandHeadBytes()
         {
-            byte[] vSrcNode = SGIPCommand.LongToBytesReverse(argSrcNode);
+            byte[] vSrcNode = SGIPCommand.LongToBytesReverse(SocketConfig.SourceNode);
             byte[] vDateCmd = SGIPCommand.IntToBytesReverse(GetDateCmd());// 命令产生日期
             byte[] vSeqNum = SGIPCommand.IntToBytesReverse(GetSeqNumber());// 序列号
             byte[] vMsgLen = SGIPCommand.IntToBytesReverse(TotalMsgLen); // 命令体总长度
             byte[] vCommandId = BitConverter.GetBytes(CommandId);
             Array.Reverse(vCommandId);
-            SequenceNumber = argSrcNode.ToString() + SGIPCommand.Bytes4ToInt(vDateCmd) + SGIPCommand.Bytes4ToInt(vSeqNum);
+            SequenceNumber = SocketConfig.SourceNode.ToString() + SGIPCommand.Bytes4ToInt(vDateCmd) + SGIPCommand.Bytes4ToInt(vSeqNum);
             byte[] vCommandHeadbytes = new byte[(int)SGIPCommandDefine.LEN_SGIP_HEADER];
             byte[] vCmdseq = new byte[12]; // 总序列号(MessageLength + Commandid + sequenceNumber)
             Buffer.BlockCopy(vMsgLen, 0, vCommandHeadbytes, 0, 4);

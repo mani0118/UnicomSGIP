@@ -6,5 +6,10 @@
         {          
             throw new System.Exception(string.Concat(argSource," longer than", argLength, " bytes:", argSourceValue));
         }
+
+        public static void CustomerException(string argStr)
+        {
+            throw new System.Exception(argStr);
+        }
     }
 }

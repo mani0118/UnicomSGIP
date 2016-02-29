@@ -42,16 +42,16 @@
   <ItemGroup>
     <Compile Include="Base\Bind.cs" />
     <Compile Include="Base\BindResp.cs" />
-    <Compile Include="Base\Config.cs" />
+    <Compile Include="Base\Help.cs" />
     <Compile Include="Base\SGIPCommand.cs" />
     <Compile Include="Base\SGIPCommandDefine.cs" />
     <Compile Include="Base\SGIPHeader.cs" />
+    <Compile Include="Base\SocketConfig.cs" />
     <Compile Include="Base\Submit.cs" />
     <Compile Include="Base\SubmitResp.cs" />
     <Compile Include="Base\UnBind.cs" />
     <Compile Include="Base\UnBindResp.cs" />
     <Compile Include="Exception\UnicomSgipException.cs" />
-    <Compile Include="Main\Model\SubmitBase.cs" />
     <Compile Include="Main\Model\SubmitRequest.cs" />
     <Compile Include="Main\UnicomSms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

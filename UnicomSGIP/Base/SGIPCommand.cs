@@ -23,10 +23,9 @@ namespace UnicomSGIP.Base
         /// 发送绑定请求
         /// </summary>
         /// <param name="argSocket"></param>
-        /// <param name="argSrcNode"></param>
-        public void Write(Socket argSocket, long argSrcNode)
+        public void Write(Socket argSocket)
         {
-            byte[] vCommandBytes = GetCommandBodybytes(argSrcNode);
+            byte[] vCommandBytes = GetCommandBodybytes();
 
             try
             {
@@ -151,11 +150,11 @@ namespace UnicomSGIP.Base
         /// </summary>
         /// <param name="argSrcCode"></param>
         /// <returns></returns>
-        private byte[] GetCommandBodybytes(long argSrcCode)
+        private byte[] GetCommandBodybytes()
         {
             byte[] vCommandBytes = new byte[(int)SGIPCommandDefine.LEN_SGIP_HEADER + _BodyBytes.Length];
             // 拷贝head字节
-            Buffer.BlockCopy(_Header.GetCommandHeadBytes(argSrcCode), 0, vCommandBytes, 0,(int)SGIPCommandDefine.LEN_SGIP_HEADER);
+            Buffer.BlockCopy(_Header.GetCommandHeadBytes(), 0, vCommandBytes, 0,(int)SGIPCommandDefine.LEN_SGIP_HEADER);
             // 拷贝body字节
             Buffer.BlockCopy(_BodyBytes, 0, vCommandBytes, (int)SGIPCommandDefine.LEN_SGIP_HEADER, _Header.TotalMsgLen - (int)SGIPCommandDefine.LEN_SGIP_HEADER);
             return vCommandBytes;

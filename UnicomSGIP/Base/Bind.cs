@@ -13,12 +13,12 @@ namespace UnicomSGIP.Base
         /// </summary>
         /// <param name="argLoginName"></param>
         /// <param name="argPassword"></param>
-        public Bind(string argLoginName, string argPassword)
+        public Bind()
         {
-            _LoginName = argLoginName;
-            _Password = argPassword;
+            _LoginName = SocketConfig.LoginName;
+            _Password = SocketConfig.Password;
             _Reserve = string.Empty;
-            _LoginType = 1;
+            _LoginType = SocketConfig.LoginType;
 
             _Header = new SGIPHeader((uint)SGIPCommandDefine.SGIP_BIND);
             _BodyBytes = new byte[(int)SGIPCommandDefine.LEN_SGIP_BIND];
